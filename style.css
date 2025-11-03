@@ -171,7 +171,7 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
     grid-column: 1 / -1;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 /* --- ANIMAZIONE LOGO FOOTER --- */
