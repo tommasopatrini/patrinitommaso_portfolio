@@ -60,17 +60,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             customCursor.style.top = `${e.clientY}px`;
         });
 
-        // Interazione con elementi cliccabili
-        const interactiveElements = document.querySelectorAll('a, .project-item');
-        
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
+        // Interazione con elementi cliccabili (delegata, così funziona anche per elementi aggiunti dinamicamente)
+        document.addEventListener('mouseover', (e) => {
+            if (e.target && (e.target.closest('a') || e.target.closest('.project-item'))) {
                 customCursor.classList.add('cursor-grow');
-            });
-            
-            element.addEventListener('mouseleave', () => {
+            }
+        });
+        document.addEventListener('mouseout', (e) => {
+            if (e.target && (e.target.closest('a') || e.target.closest('.project-item'))) {
                 customCursor.classList.remove('cursor-grow');
-            });
+            }
         });
     }
 
@@ -145,4 +144,88 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     loadFavicon();
+
+    // =======================================
+    // 6. AUTOLINK: @patrinitommaso ed email (nessuno stile aggiuntivo)
+    // =======================================
+    function autoLinkContent(rootElement) {
+        const INSTAGRAM_HANDLE_REGEX = /@patrinitommaso\b/gi;
+        const EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
+
+        const SKIP_TAGS = new Set(['A', 'SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'CODE', 'PRE']);
+
+        function processTextNode(textNode) {
+            const original = textNode.nodeValue;
+            if (!original || (!INSTAGRAM_HANDLE_REGEX.test(original) && !EMAIL_REGEX.test(original))) {
+                // Reset lastIndex for global regexes for next runs
+                INSTAGRAM_HANDLE_REGEX.lastIndex = 0;
+                EMAIL_REGEX.lastIndex = 0;
+                return;
+            }
+
+            // Reset lastIndex before reuse
+            INSTAGRAM_HANDLE_REGEX.lastIndex = 0;
+            EMAIL_REGEX.lastIndex = 0;
+
+            const fragment = document.createDocumentFragment();
+
+            // Build a combined regex to process in reading order
+            const COMBINED = new RegExp(`${INSTAGRAM_HANDLE_REGEX.source}|${EMAIL_REGEX.source}`, 'gi');
+            let match;
+            let lastIndex = 0;
+
+            while ((match = COMBINED.exec(original)) !== null) {
+                const start = match.index;
+                const end = COMBINED.lastIndex;
+
+                // Text before match
+                if (start > lastIndex) {
+                    fragment.appendChild(document.createTextNode(original.slice(lastIndex, start)));
+                }
+
+                const matchedText = original.slice(start, end);
+
+                let anchor = null;
+                if (/^@patrinitommaso$/i.test(matchedText)) {
+                    anchor = document.createElement('a');
+                    anchor.href = 'https://www.instagram.com/patrinitommaso/';
+                    anchor.target = '_blank';
+                    anchor.rel = 'noopener noreferrer';
+                    anchor.textContent = matchedText;
+                } else if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(matchedText)) {
+                    anchor = document.createElement('a');
+                    anchor.href = `mailto:${matchedText}`;
+                    anchor.textContent = matchedText;
+                }
+
+                fragment.appendChild(anchor);
+                lastIndex = end;
+            }
+
+            // Trailing text
+            if (lastIndex < original.length) {
+                fragment.appendChild(document.createTextNode(original.slice(lastIndex)));
+            }
+
+            textNode.parentNode.replaceChild(fragment, textNode);
+        }
+
+        function walk(node) {
+            if (SKIP_TAGS.has(node.nodeName)) return;
+            if (node.nodeType === Node.TEXT_NODE) {
+                processTextNode(node);
+                return;
+            }
+            let child = node.firstChild;
+            while (child) {
+                const next = child.nextSibling; // Cache next because child may be replaced
+                walk(child);
+                child = next;
+            }
+        }
+
+        walk(rootElement);
+    }
+
+    autoLinkContent(document.body);
 });

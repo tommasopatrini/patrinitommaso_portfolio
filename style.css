@@ -12,6 +12,16 @@ body {
     scroll-behavior: smooth;
 }
 
+/* Link: ereditano il colore del testo e senza underline ovunque */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover, a:focus, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
 
 
 /* ======================================= */
