@@ -807,6 +807,19 @@ footer {
     display: block;
 }
 
+/* Link nei crediti: sempre sottolineati (solo nei contenuti delle pagine) */
+.credits-content a {
+    text-decoration: underline;
+    color: black !important;
+}
+
+.credits-content a:hover,
+.credits-content a:focus,
+.credits-content a:active {
+    text-decoration: underline;
+    color: black !important;
+}
+
 
 /* BLOCCO DESTRO: Galleria Immagini (Scrollabile) */
 .project-gallery-panel {
