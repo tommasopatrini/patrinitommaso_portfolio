@@ -41,8 +41,8 @@ a:hover,
 
 /* Crea il cursore personalizzato */
 .custom-cursor {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     pointer-events: none;
@@ -62,7 +62,7 @@ a:hover,
 
 /* NUOVA CLASSE: Ingrandisce il cursore di circa 2,5x */
 .cursor-grow {
-    transform: translate(-50%, -50%) scale(2.5); /* Ingrandisce a 2.5 volte */
+    transform: translate(-50%, -50%) scale(2); /* Ingrandisce a 2.5 volte */
 }
 
 
@@ -543,14 +543,14 @@ footer {
 /* --- STILI PAGINE PROGETTI (Design/Photo/Film) --- */
 /* ======================================= */
 
-/* Wrapper che gestisce la griglia 3xN (Desktop) */
+/* Wrapper che gestisce la griglia 4xN (Desktop) */
 .project-grid-wrapper {
-    /* ABILITA LA GRIGLIA 3 COLONNE DENTRO IL CONTAINER 24-COLONNE */
+    /* ABILITA LA GRIGLIA 4 COLONNE DENTRO IL CONTAINER 24-COLONNE */
     display: grid;
-    /* La griglia si divide in tre colonne uguali */
-    grid-template-columns: repeat(3, 1fr);
-    /* Utilizziamo il gap di 15px definito dal .container */
-    gap: 15px;
+    /* La griglia si divide in quattro colonne uguali */
+    grid-template-columns: repeat(4, 1fr);
+    /* Utilizziamo il gap di 10px definito dal .container */
+    gap: 10px;
     
     /* Il wrapper deve estendersi per tutta la larghezza della griglia 24-colonne */
     grid-column: 1 / -1;
