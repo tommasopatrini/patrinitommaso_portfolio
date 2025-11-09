@@ -167,14 +167,15 @@ main {
 /* --- FOOTER --- */
 footer {
     padding: 15px 0;
-    border-top: 1px solid black; /* MANTENUTO NERO (non deve invertire) */
+    border-top: 1px solid black; 
     margin-top: 120px;
-    /* RIMOSSO: mix-blend-mode: difference; (Per mantenere visibile la linea) */
 }
 
-.container footer {
+/* Nota: .container footer NON è necessario se .container è già applicato al wrapper padre. 
+   Se stai cercando di dare uno sfondo bianco a tutto il footer, dovresti applicarlo direttamente a 'footer'. */
+/* .container footer {
     background-color: white;
-}
+} */
 
 .footer-grid {
     display: flex;
@@ -184,16 +185,7 @@ footer {
     margin-bottom: 15px;
 }
 
-/* --- ANIMAZIONE LOGO FOOTER --- */
-@keyframes scroll-left {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
-
+/* --- LOGO FOOTER FISSO --- */
 .footer-name {
     grid-column: 1 / -1;
     line-height: 1;
@@ -202,19 +194,17 @@ footer {
     overflow: hidden;
     white-space: nowrap;
     font-weight: normal;
-}
-
-.scroll-wrap {
-    display: flex;
-    width: 200%;
-    animation: scroll-left 8s linear infinite;
+    
+    /* MODIFICA CHIAVE: Applichiamo il padding di 15px LATERALE al contenitore.
+       Questo "restringe" il contenuto interno del 100% - 30px totali. */
+    padding: 0 15px; 
+    box-sizing: border-box; /* Opzionale, ma buona pratica */
 }
 
 .footer-name img {
-    width: 50%;
+    width: 100%;
     height: auto;
-    display: block;
-    /* RIMOSSO: mix-blend-mode: difference; (Per mantenere visibile il logo) */
+    /* RIMOSSO: margin-left: 15px; e margin-right: 15px; */
 }
 
 /* ======================================= */
@@ -297,7 +287,7 @@ footer {
     }
 
     .footer-name img {
-    width: 75%;
+    width: 100%;
     height: auto;
     display: block;
     /* RIMOSSO: mix-blend-mode: difference; (Per mantenere visibile il logo) */

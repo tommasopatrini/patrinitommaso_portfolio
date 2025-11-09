@@ -74,6 +74,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
 
+
+
+
+    
     // =======================================
     // 4. LOGICA FOOTER SCROLL OVERLAP (Link Fisso)
     // =======================================
@@ -120,6 +124,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Esegui il check iniziale al caricamento della pagina
         checkFooterOverlap();
     }
+
+
+
+
 
 
     // =======================================
