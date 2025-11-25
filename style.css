@@ -398,6 +398,21 @@ footer {
     /* Nota: non ha bisogno di overflow-y: hidden, perché è un'immagine */
 }
 
+/* --- BACK TO PROJECTS: freccia e allineamento --- */
+.back-to-projects-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    text-decoration: none;
+}
+.back-to-projects-link .back-arrow {
+    font-size: 0.7em; /* più piccola del testo */
+    line-height: 1;
+    display: inline-block;
+    transform: translateY(-1px);
+}
+
+
 
 /* Contenitore generale per le sezioni CV (Education, Experiences, etc.) */
 .cv-section {
