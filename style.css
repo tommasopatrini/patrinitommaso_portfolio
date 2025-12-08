@@ -848,6 +848,13 @@ footer {
     /* RIMOSSO: mix-blend-mode: difference; */
 }
 
+/* Margine nero per le immagini del progetto Pixar */
+body:has([src*="pixar"]) .gallery-image[src*="pixar"] {
+    border: 10px solid black;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
 /* Rimuove il margine inferiore dall'ultima immagine (opzionale ma pulito) */
 .project-gallery-panel .gallery-image:last-child {
     margin-bottom: 15px; /* Spazio prima del footer */
