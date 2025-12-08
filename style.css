@@ -850,9 +850,15 @@ footer {
 
 /* Margine nero per le immagini del progetto Pixar */
 body:has([src*="pixar"]) .gallery-image[src*="pixar"] {
-    border: 10px solid black;
+    border: 7px solid black;
     box-sizing: border-box;
     border-radius: 8px;
+}
+
+/* Margine nero per la cover Pixar */
+body:has([src*="pixar"]) .project-cover[src*="pixar"] {
+    border: 4px solid black;
+    box-sizing: border-box;
 }
 
 /* Rimuove il margine inferiore dall'ultima immagine (opzionale ma pulito) */
