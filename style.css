@@ -327,6 +327,11 @@ footer {
                 transform 0.2s cubic-bezier(0.50, -0.40, 0.20, 1.25);
     
     transform: scale(0.7); /* Inizialmente leggermente rimpicciolito */
+    
+    /* Protezione immagini */
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 }
 
 
@@ -623,6 +628,17 @@ footer {
     
     /* MODIFICATO: Proporzioni naturali */
     height: auto; 
+    
+    /* Protezione immagini */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 
@@ -846,6 +862,17 @@ footer {
     margin-bottom: 15px;
     
     /* RIMOSSO: mix-blend-mode: difference; */
+    
+    /* Protezione immagini */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 /* Margine nero per le immagini del progetto Pixar */

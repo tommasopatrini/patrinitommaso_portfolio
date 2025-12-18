@@ -237,3 +237,43 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     autoLinkContent(document.body);
 });
+    
+    // =======================================
+    // 7. PROTEZIONE IMMAGINI
+    // =======================================
+    
+    // Seleziona tutte le immagini del progetto e cover
+    const protectedImages = document.querySelectorAll('.gallery-image, .project-cover, .trail-image');
+    
+    // Disabilita click destro su tutte le immagini protette
+    protectedImages.forEach(img => {
+        // Blocca il menu contestuale (click destro)
+        img.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Blocca il doppio click
+        img.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Blocca il drag
+        img.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Attributi HTML per sicurezza aggiuntiva
+        img.setAttribute('draggable', 'false');
+        img.setAttribute('ondragstart', 'return false;');
+    });
+    
+    // Protezione globale contro il salvataggio delle immagini
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
