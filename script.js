@@ -62,12 +62,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // Interazione con elementi cliccabili (delegata, così funziona anche per elementi aggiunti dinamicamente)
         document.addEventListener('mouseover', (e) => {
-            if (e.target && (e.target.closest('a') || e.target.closest('.project-item'))) {
+            if (e.target && (e.target.closest('a') || e.target.closest('.project-item') || e.target.classList.contains('trail-image'))) {
                 customCursor.classList.add('cursor-grow');
             }
         });
         document.addEventListener('mouseout', (e) => {
-            if (e.target && (e.target.closest('a') || e.target.closest('.project-item'))) {
+            if (e.target && (e.target.closest('a') || e.target.closest('.project-item') || e.target.classList.contains('trail-image'))) {
                 customCursor.classList.remove('cursor-grow');
             }
         });

@@ -319,8 +319,9 @@ footer {
     width: 200px;
     height: auto; /* Mantiene le proporzioni originali */
     object-fit: contain;
-    pointer-events: none;
+    pointer-events: auto; /* Abilita il click */
     opacity: 0;
+    cursor: pointer;
     
     /* Funzione di easing personalizzata per il bounce */
     transition: opacity 0.2s cubic-bezier(0.50, -0.40, 0.20, 1.25),
@@ -328,6 +329,16 @@ footer {
     
     transform: scale(0.7); /* Inizialmente leggermente rimpicciolito */
     
+}
+
+/* Effetto hover sulle immagini del trail */
+.trail-image:hover {
+    transform: scale(1.08) translateY(-8px);
+    opacity: 1;
+    transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+
     /* Protezione immagini */
     user-select: none;
     -webkit-user-select: none;
@@ -361,7 +372,7 @@ footer {
     
     position: relative;
     
-    /* Tipografia standardizzata */
+    /* Tipografanimazioia standardizzata */
     font-size: 16px;
     line-height: 18px;
     letter-spacing: -0.02em;
