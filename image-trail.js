@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         'cover-urban.webp': 'urbanvisions.html',
         'cover-luigis.png': 'luigis.html',
         'cover-views.webp': 'views.html',
-        'cover-eggleston1.png': 'eggleston.html'
+        'cover-eggleston1.png': 'eggleston.html',
+        'cover-baltic.webp': 'balticcircle.html'
     };
     
     const images = [
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     '/assets/images/cover/cover-urban.webp',
     '/assets/images/cover/cover-views.webp',
     '/assets/images/cover/cover-eggleston1.png',
+    '/assets/images/cover/cover-baltic.webp',
 ];
 
     const trailContainer = document.getElementById('image-trail-container');
